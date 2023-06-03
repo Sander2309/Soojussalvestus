@@ -1,0 +1,102 @@
+h2{
+  font-size: 20px;
+}
+
+header h2 {
+  text-align: center;
+}
+
+.round-upper {
+  border-radius: 4px 4px 0px 0px;
+}
+
+.mode-button {
+  border-radius: 4px 0px 0px 0px;
+}
+
+body{
+  font-size: 16px;
+}
+
+input{
+  width: 80px;
+}
+
+#temp_piirang{
+  width: 20px;
+}
+
+.info, .energiakogus, .paagiMaht, .materjal{
+  display: none;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.err{
+  display: none;
+}
+
+.w3-card {
+  text-align: left;
+  margin: 8px;
+}
+
+.fc2 {
+  flex: 31%;
+}
+.fc1 {
+  flex: 60%;
+  display: none;
+}
+
+/* Järgnevad kolm osa muudavad elementide suurust olenevalt sellest, kui suur on brauseri aken */
+@media screen and (max-width: 900px) {
+  .fc2 {
+    flex: 100%;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .fc1 {
+    flex: 100%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  h1 {
+    width: 315px;
+    font-size: 32px;
+  }
+}
+
+#joonis{
+  max-width: 384px;
+  margin: auto;
+  display: block;
+}
+
+#allaLaadimine{
+  margin: -8px 28px 16px;
+}
+
+.p-small {
+  padding: 0px 8px !important;
+}
+
+.tähised{
+  list-style-type: none;
+}
+
+.tähised, .valemid{
+  margin-top: 0px;
+}
+
+#plokkskeem{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}

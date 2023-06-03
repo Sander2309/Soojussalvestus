@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Soojasalvestus kalkulaator</title>
+  <link type="image/icon" href="images/favicon.ico" rel="icon"><!--Väikene pilt nime ette-->
+</head>
+<body onload="täidaAndmetabel()">
+  <div class="w3-sidebar w3-bar-block w3-border" style="display:none" id="külgMenüü"><!--Külg menüü-->
+    <button onclick="this.parentElement.style.display ='none'" class="w3-bar-item w3-large w3-hover-amber">Sule &times;</button>
+    <a href="index.html" class="w3-bar-item w3-button w3-hover-amber">Programm</a>
+    <a href="info.html" class="w3-bar-item w3-button w3-hover-amber">Kuidas see programm töötab?</a>
+    <a href="taust.html" class="w3-bar-item w3-button w3-hover-amber">Taust</a>
+  </div>
+  <div class="w3-border w3-bar w3-amber"><!--Pealkirja osa-->
+    <button class="w3-button w3-bar-item w3-hover-orange w3-xlarge w3-margin w3-padding-large" onclick="document.getElementById('külgMenüü').style.display = 'block'">☰</button>
+    <div class="w3-bar-item"><h1>Soojussalvestuspaagi kalkulaator</h1></div>
+  </div>
+  <div class="w3-container w3-sand">
+    <table class="w3-table-all w3-hoverable w3-centered w3-margin-top">
+      <thead>
+        <tr>
+          <th>Valem/nimi</th>
+          <th>Sulamispunkt (℃)</th>
+          <th>Faasimuutussoojus (kJ/kg)</th>
+          <th>Tihedus (kg/m3)</th>
+          <th>Massierisoojus tahke (kJ/kg∙K)</th>
+          <th>Massierisoojus vedel (kJ/kg∙K)</th>
+          <th>Keemis või Lagunemis temp (℃)</th>
+          <th>Aine tüüp</th>
+          <th>Andmeallikad</th>
+        </tr>
+      </thead>
+      <tbody id="andmetabeliSisu"></tbody>
+    </table>
+    <h2>Märkused:</h2>
+    <ol>
+      <li>Andmed kehtivad standardrõhul.</li>
+      <li>Naatrium ja ka teised leelismetallid plahvatavad kokkupuutel veega! Samuti söövitavad need paljusid materjale. Kasutage leelismetalle ainult siis, kui teate täpselt mida teete.</li>
+      <li>Kõik orgaanilised ained on mingil määral tuleohtlikud. Nende soojendamisel üle 100℃ on rangelt soovituslik kasutada õhukindlalt suletud mahuteid.</li>
+      <li>Nitraadid (NO₃ lõppuga) on oksüdeeriad! Veenduga, et kõik materjalid, millega need kokku puutuvad, oleks piisavalt oksüdatsiooni kindlad.</li>
+      <li>Juhuks, kui see ei ole peale eelneva kahe märkuse lugemist selge: ÄRGE SEGAGE orgaanilisi aineid ja nitraate! Seda tehes võite soojussalvesti asemel saada pommi.</li>
+      <li>Plii on mürgine! Vältige sellega otsest kokkupuudet ja aine sattumist keskkonda.</li>
+    </ol>
+    <br>
+    <h2>Kasutatud allikad:</h2>
+    <ol id="allikad">
+      <li><a href="https://www.eng.mie-u.ac.jp/research/activities/29/29_31.pdf">Someshower Dutt Sharma, Hiroaki Kitano ja Kazunobu Sagara "Phase Change Materials for Low Temperature Solar Thermal Applications"</a></li>
+      <li><a href="https://reader.elsevier.com/reader/sd/pii/S1743967115301215?token=B31957164494E3F56B9F6FDD2864447FF9C0F277752773DA9EF7D41949A449C2DC0FF4CA00A8B9EE32E7EEC77B01F075&originRegion=eu-west-1&originCreation=20221026093503">Abhay Dinker, Madhu Agarwal ja G.D. Agarwal "Heat storage materials, geometry and applications: A review"</a></li>
+      <li>Theudore Gray "Keemilised elemendid"</li>
+      <li><a href="https://www.americanelements.com/meltingpoint.html">"Melting Point of Common Metals, Alloys, & Other Materials"</a></li>
+      <li><a href="https://www.sciencedirect.com/science/article/pii/S0038092X22004741#b0130">Ting Yan ja Hong Zhang "A critical review of salt hydrates as thermochemical sorption heat storage materials: Thermophysical properties and reaction kinetics"</a></li>
+      <li><a href="https://docs.lib.purdue.edu/cgi/viewcontent.cgi?article=1319&context=ihpbc">Jason Hirschey, Kyle R Gluesenkamp, Anne Mallow ja Samuel Graham "Review of Inorganic Salt Hydrates with Phase Change Temperature in Range of 5 to 60°C and Material Cost Comparison with Common Waxes"</a></li>
+      <li><a href="https://webbook.nist.gov/chemistry/form-ser/#Help">NIST Chemistry WebBook, SRD 69</a></li>
+      <li><a href="https://www.rkas.ee/sites/default/files/public-uploaded-files/Uuringud/Energia%20lokaalse%20tootmise%20anal%C3%BC%C3%BCs%20b%C3%BCroohoonele%20-%20II%20osa.pdf">Argo Rosin, Siim Link, Imre Drovtar "Energia lokaalse tootmise analüüs büroohoonele, Osa II: Energiasalvestid ja salvestustehnoloogiad"</a></li>
+      <li><a href="https://pharmacentral.com/product/polyethylene-glycol-pharmaceutical-excipient/">"Polyethylene Glycol | Uses, Suppliers, and Specifications"</a></li>
+      <li><a href="https://pubs.aip.org/aip/acp/article/1738/1/280008/885007/Thermal-properties-of-an-erythritol-derivative">Lucie Trhlikova, Radek Prikryl ja Oldrich Zmeskal "Thermal properties of an erythritol derivative"</a></li>
+      <li><a href="https://www.engineeringtoolbox.com/fusion-heat-metals-d_1266.html">"Metals - Latent Heat of Fusion "</a></li>
+      <li><a href="https://www.engineeringtoolbox.com/liquid-metal-boiling-points-specific-heat-d_1893.html">"Metals - Boiling Points and Specific Heat"</a></li>
+      <li><a href="https://www.bqchemicals.com/new/Paraffin-wax.html">"Paraffin wax"</a></li>
+      <li><a href="https://www.dlr.de/tt/Portaldata/41/Resources/dokumente/tp/tpt-tsf/2012_Thermal_Energy_Storage_Materials_and_Systems_(Annual_Heat_Transfer_Review).pdf">Thomas Bauer, Wolf-Dieter Steinmann, Doerte Laing ja Rainer Tamme "Thermal energy storage materials and systems"</a></li>
+      <li><a href="https://www.engineeringtoolbox.com/boiling-temperature-metals-d_1267.html">"Metals - Boiling Temperatures"</a></li>
+      <li><a href="https://www.researchgate.net/publication/277726287_Thermal_Conductivity_Enhancement_of_Sodium_Acetate_Trihydrate_by_Adding_Graphite_Powder_and_the_Effect_on_Stability_of_Supercooling">Jakob Berg Johansen, Mark Dannemand, Weiqiang Kong, Jianhua Fan, Janne Dragsted ja Simon Furbo "Thermal Conductivity Enhancement of Sodium Acetate Trihydrate by Adding Graphite Powder and the Effect on Stability of Supercooling"</a></li>
+      <li><a href="https://www.powermag.com/fundamentals-of-zero-liquid-discharge-system-design/">William A. Shaw "Fundamentals of Zero Liquid Discharge System Design"</a></li>
+      <li><a href="https://www.yumpu.com/en/document/view/23291525/32-properties-of-inorganic-compounds-kaye-and-laby-online">J.G.E.Phillips "3.2 Properties of inorganic compounds"</a></li>
+    </ol>
+  </div>
+</body>
+<script src=app.js></script>
+</html>

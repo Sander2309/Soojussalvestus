@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Soojasalvestus kalkulaator</title>
+  <link type="image/icon" href="images/favicon.ico" rel="icon"><!--Väikene pilt nime ette-->
+</head>
+
+<body class="w3-sand">
+  <div class="w3-sidebar w3-bar-block w3-border" style="display:none" id="külgMenüü"><!--Külg menüü-->
+    <button onclick="this.parentElement.style.display ='none'" class="w3-bar-item w3-large w3-hover-amber">Sule &times;</button>
+    <a href="index.html" class="w3-bar-item w3-button w3-hover-amber">Programm</a>
+    <a href="andmed.html" class="w3-bar-item w3-button w3-hover-amber">Ainete andmebaas</a>
+    <a href="taust.html" class="w3-bar-item w3-button w3-hover-amber">Taust</a>
+  </div>
+  <div class="w3-border w3-bar w3-amber"><!--Pealkirja osa-->
+    <button class="w3-button w3-bar-item w3-hover-orange w3-xlarge w3-margin w3-padding-large" onclick="document.getElementById('külgMenüü').style.display = 'block'">☰</button>
+    <div class="w3-bar-item"><h1>Soojussalvestuspaagi kalkulaator</h1></div>
+  </div>
+
+  <div class="w3-container w3-sand w3-padding-large"><!--Sisu-->
+    <h2 style="text-align: center;">Üldist</h2>
+    <p>
+      Kui Te olete jõudnud siiani, siis olete ilmselt juba avastanud menüünupu: <button class="w3-button w3-hover-orange w3-amber">☰</button>
+      <br>
+      Selle nupu vajutmisel avaneb külgmenüü, mille abil on Teil võimalik liikuda nelja erineva lehe vahel: „Programm“, „Ainete andmebaas“, „Taust“ ja leht, millel praegu asute, „Kuidas see programm töötab?“. 
+      <br>
+      Lehel „Programm“ saate arvutada erinevaid soojusenergia salvestamisega seonduvaid suurusi. Täpsemalt tuleb sellest juttu järgmistes osades. 
+      Lehel „Ainete andmebaas“ on näha erinevad soojusenergia salvestamiseks kasutatavad ained koos neid iseloomustavate parameetritega. 
+      Need andmed, koos kasutaja sisestatud väärtustega, on aluseks kõigile programmi arvutustele.
+      Lehel „Taust“ on lühidalt kirjeldatud rakenduse eesmärke ja seda, miks autor otsustas sellise programmi kirjutada.
+    </p>
+    <p>
+      Selleks, et programmiga midagi arvutada, tuleb valida üks kolmest võimalikust režiimist, mis paiknevad lehel „Programm“ pealkirja all:
+    </p>
+    <div class="w3-bar w3-amber round-upper" style="width:100%">
+      <button class="w3-bar-item w3-button w3-hover-orange arvutusV p-small"><p>Millist materjali kasutada?</p></button>
+      <button class="w3-bar-item w3-button w3-hover-orange arvutusV p-small"><p>Kui suurt paaki vaja on?</p></button>
+      <button class="w3-bar-item w3-button w3-hover-orange arvutusV p-small"><p>Palju soojust saab salvestada?</p></button>
+    </div>
+    <p>
+      Igal režiimil on erinev otstarve. 
+      Pärast soovitud valikule vajutamist avanevad valikuriba all selle lühijuhend ja arvutusteks vajalike andmete sisestamise väljad.
+    </p>
+    <br>
+    <h2 style="text-align: center;">Millist materjali kasutada?</h2>
+    <p>
+      „Millist materjali kasutada?“ on mõeldud selleks, et aidata Teil leida kõige sobilikum soojussalvestusmaterjal. 
+      See on kolmest režiimist kõige lihtsam ja vajab töötamiseks ainult kahe parameetri sisestamist:
+      <br>
+      <label for="max_temp">Maksimaalne temperatuur (°C):</label><input inputmode="decimal" id="max_temp"> - temperatuur, milleni soovite soojussalvestusainet soojendada. <br>
+      <label for="min_temp">Minimaalne temperatuur (°C):</label><input inputmode="decimal" id="min_temp"> - temperatuur, milleni aine võib jahtuda, enne kui see muutub liiga külmaks, et soojusenergiat saaks kasutada.</p>
+    <p>
+      Peale „Arvuta“ nupu vajutamist leiab programm andmebaasis olevate ainete energiatiheduse valitud temperatuurivahemikus, kasutades järgnevaid valemeid:
+      <ul class="valemid">
+        <li>e<sub>m</sub> = c × (T<sub>max</sub> - T<sub>min</sub>)</li>
+        <li>e<sub>v</sub> = e<sub>m</sub> × ρ</li>
+      </ul>
+      kus:
+      <ul class="tähised">
+        <li>e<sub>m</sub> - energiatihedus massi kohta (J/kg)</li>
+        <li>e<sub>v</sub> - energiatihedus mahu kohta (J/m³)</li>
+        <li>T<sub>max</sub> - maksimaalne temperatuur (°C)</li>
+        <li>T<sub>min</sub> - minimaalne temperatuur (°C)</li>
+        <li>c - aine erisoojus (J/(kg×K))</li>
+        <li>ρ - tihedus (kg/m³)</li>
+      </ul>
+      Kui aine on kogus sisestatud temperatuurivahemikus tahke või vedel, siis kasutatakse esimeses valemis erisoojust vastavalt tahke või vedela oleku jaoks.
+      Kui aine sulemispunkt jääb vahemikku T<sub>max</sub> kuni T<sub>min</sub>, siis tuleb selle energiatiheduse leidmiseks liita vedelas olekus, faasi muutuse käigus ja tahkes olekus salvestuv energia:
+      <ul class="valemid">
+        <li>e<sub>m</sub> = c<sub>vedel</sub> × (T<sub>max</sub> - T<sub>sula</sub>) + ss + c<sub>tahke</sub> × (T<sub>sula</sub> - T<sub>min</sub>)</li>
+      </ul>
+      kus:
+      <ul class="tähised">
+        <li>ss - sulamissoojus (J/kg)</li>
+        <li>T<sub>sula</sub> - aine sulamistemperatuur (°C)</li>
+      </ul>
+      Vaikimisi jätab programm arvutustest kõrvale kõik ained, mille keemis- või lagunemistemperatuur on madalam kui sisestatud maksimumtemperatuur. 
+      Samas, mõnel juhul võib aine energiatihedus vahemikus sisestatud miinimumtemperatuurist selle keemis- või lagunemistemperatuurini olla suurem kui teise materjali energiatihedus vahemikus sisestatud miinimumtemperatuurist sisestatud maksimumtemperatuurini. 
+      Seetõttu võib osutuda otstarbekaks piirata soojussalvestuspaagi maksimumtemperatuuri, et oleks võimalik kasutada madalama keemis/lagunemistemperatuuri, kuid suurema energiatihedusega või odavamat ainet. 
+      Kui linnutada andmesisestusväljal valik „Luba ained, mille keemis/lagunemis temperatuur jääb alla maksimumi“, siis arvutab programm ka selliste ainete energiatiheduse, mille keemis- või lagunemistemperatuur jääb alla sisestatud maksimumi. 
+      Nende ainete maksimumtemperatuurina kasutatakse arvutustes keemis- või lagunemistemperatuuri.
+      <br>
+      Tulemused kuvatakse tulpdiagrammina, mis näitab kaheksa kõige suurema salvestusvõimaga aine energiatihedust. 
+      Hiirega konkreetsele ainele liikudes on näha ka täpne energiatihedus, aine sulamispunkt ja keemis/lagunemis punkt. 
+      Vaikimisi on ained reastatud massienergiatiheduse alusel, ühikuks on kJ/kg, kuid graafiku ülemisest paremast nurgast on võimalik valida ka teisi ühikuid. 
+      Juhul, kui valitakse mõni mahtenergiatiheduse ühik, näiteks (kJ/dm³), siis järjestuvad ained automaatselt ümber mahtenergiatiheduse alusel.
+      Kui materjalide hulgas on selliseid, mille keemis/lagunemis temperatuur on madalam sisestatud maksimumtemperatuurist, on nende tulbad märgitud punase värviga.
+      Rakenduse arvutatud energiatihedused on võimalik edasiseks analüüsiks csv-failina alla laadida ning tulpdiagrammi on võimalik salvestada png-failina.
+    </p>
+    <br>
+    <h2 style="text-align: center;">Kui suurt paaki vaja on?</h2>
+    <p>
+      Nagu nimest võiks järeldada on teine režiim „Kui suurt paaki vaja on?“ mõeldud soojussalvestuspaagi mahu arvutamiseks. 
+      Nagu eelmise režiimi puhul tuleb ka siin sisestada soojussalvestusmaterjali maksimum- ja miinimumtemperatuur. 
+      Lisaks nendele on vaja sisestada järgnevad andmed:
+      <br>
+      <label for="mat">Materjal:</label><select id="mat"><option>Aine</option></select> - aine, mida soovite soojusenergia salvestamiseks kasutada<br>
+      <label for="täituvus">Mahuti täituvus (%):</label><input inputmode="decimal" id="täituvus"> - kui mitu protsenti paagi sisemisest mahust on valitud ainega täidetud. Kuna ained paisuvad soojenemise ja ka faasimuutuse käigus on mõistlik jätta natuke tühja ruumi.<br>
+      <label for="E">Salvestatav energia:</label><input inputmode="decimal" id="E"> - kui palju energiat on vaja salvestada<br>
+      Energia asemel võib sisestada ka:<br>
+      <label for="P">Võimsus:</label><input inputmode="decimal" id="P"> - võimsus, millega kavatsete paagis olevat soojusenergiat tarbida<br>
+      <label for="aeg">Tarbimise kestus:</label><input inputmode="decimal" id="aeg"> - kui kaua peab paagis olev soojusenergia sellist tarbimist rahuldama<br>
+    </p>
+    <p>
+      Juhul, kui sisestati tarbimise võimsus ja kestus, leiab programm salvestatava energiakoguse valemiga:
+      <ul class="valemid">
+        <li>E = P × t</li>
+      </ul>
+      kus:
+      <ul class="tähised">
+        <li>E - salvestatav energia (J)</li>
+        <li>P - soojusenergia tarbimise võimsus W</li>
+        <li>t - tarbimise kestus (s)</li>
+      </ul>
+      Valitud aine energiatihedus leitakse samal põhimõttel, kui „Millist materjali kasutada?“ režiimis. 
+      Seejärel saab programm leida soojusenergia salvestamiseks vajaliku aine mahu ja paagi sisemise ruumala:
+      <ul class="valemid">
+        <li>V<sub>a</sub> = E / e<sub>v</sub></li>
+        <li>V<sub>p</sub> = V<sub>a</sub> / pt × 100%</li>
+      </ul>
+      kus:
+      <ul class="tähised">
+        <li>V<sub>a</sub> - soojussalvestusaine maht (m³)</li>
+        <li>V<sub>p</sub> - soojussalvestuspaagi sisemine maht (m³)</li>
+        <li>pt - paagi täituvus (%)</li>
+      </ul>
+      Programmi arvutatud parameetrid kuvatakse informatiivse tekstina. 
+      Juhul, kui valitud aine keemis- või lagunemistemperatuur on väiksem kui sisestatud maksimumtemperatuur, algab tekst vastava märkusega. 
+      Rippmenüüde kaudu on võimalik muuta, millistes mõõtühikutes arvutatud ruumala ja energiatiheduse väärtusi kuvatakse.
+    </p>
+    <br>
+    <h2 style="text-align: center;">Palju soojust saab salvestada?</h2>
+    <p>
+      Viimane valik „Palju soojust saab salvestada?“ sisaldab kõige enam sisend- ja väljundparameetreid. 
+      Erinevalt kahest eelnevast ei nõua see kõigi parameetrite sisestamist. 
+      Olenevalt sellest, kui palju informatsiooni sisestati, väljastab see erinevas koguses tulemusi. 
+      <br>
+      Minimaalselt tuleb valida materjal ja sisestada maksimum- ja miinimumtemperatuur, salvestuspaagi kuju ja mõõtmed. 
+      Salvestuspaagi kuju võib olla kas risttahukas, silinder, ümarate otstega silinder (kapsel) või kera. Vajalikud mõõtmed sõltuvad valitud kujust. 
+      Samuti on võimlik valida, kas tegemist on paagi sise- või välismõõtmetega. Juhul, kui Te sisestate välismõõtmed, tuleb Teil sisestada ka isolatsiooni paksus, et programm saaks leida sisemõõtmed. 
+      Nende andmete alusel arvutab rakendus aine energiatiheduse, kasutades samu valemeid, kui „Millist materjali kasutada?“ režiimis ning salvestuspaagi sisemise mahu, kasutades vastava kujundi ruumala valemit. 
+      Juhul, kui Te sisestate mahuti täituvuse, leiab programm paagis oleva aine mahu valemiga:
+      <ul class="valemid">
+        <li>V<sub>a</sub> = V<sub>a</sub> / 100% × pt</li>
+      </ul>
+      Vaikimisi eeldab programm, et täituvus on 100%.
+      <br>
+      Seejärel arvutab programm energiahulga, mida on võimalik paagitäies valitud soojussalvestusaines salvestada, kasutades järgmist valemit:
+      <ul class="valemid">
+        <li>E = V<sub>a</sub> × e<sub>v</sub></li>
+      </ul>
+      Arvutuste tulemused väljastatakse tekstina. 
+      Nagu ka „Millist materjali kasutada?“ režiimis on võimalik muuta kasutatud ühikuid.
+      <br>
+      Kui sisestada lisaks eelnevale ka võimsus, millega paagis olevale salvestusainele soojusenergiat juurde antakse või ära võetakse, siis leiab rakendus aja, mis kulub salvestusaine temperatuuri tõusmiseks miinimumtemperatuurilt maksimumtemperatuurini või langemiseks maksimumtemperatuurilt miinimumtemperatuurini, kasutades valemit:
+      <ul class="valemid">
+        <li>t = E / P</li>
+      </ul>
+      Sellisel juhul lisandub tulemusi kirjeldavale tekstile graafik, millel on kujutatud paagi sisetemperatuuri langemist/tõusmist aja möödudes. 
+      Graafikul on värvide abil tähistatud ka aine agregaatolek.
+      <br>
+      Kui eelnevatele andmetele lisada ka paaki ümbritseva isolatsiooni soojustakistus või soojusjuhtivustegur ning isolatsioonikihi paksus ja mahutit ümbritseva keskkonna temperatuur, siis arvestab programm temperatuurigraafiku ja kasutusaja arvutamisel lisaks tarbimisele ka isolatsiooni läbiva soojusvoolu võimsusega. 
+      Isolatsiooni läbiva soojusvoolu saab arvutada järgneva valemiga:
+      <ul class="valemid">
+        <li>ϕ = S / R × ∆T</li>
+      </ul>
+      kus:
+      <ul class="tähised">
+        <li>ϕ - isolatsiooni läbiv soojusvool (W)</li>
+        <li>R - soojustakistus ((m²×K)/W)</li>
+        <li>ΔT - paagi sisemuse ja väliskeskkonna temperatuuride vahe (°C)</li>
+      </ul>
+      Seda valemit ei ole aga otseselt võimalik antud programmis rakendada. 
+      Kui jätta kõrvale aeg, mille jooksul toimub faasimuutus, siis on paagi sisetemperatuur pidavas muutumises ja ΔT ei ole konstantne suurus. 
+      Seetõttu muutub ka soojusvool. 
+      Seetõttu kasutab rakendus jahtumiskõvera arvutamiseks valemit koos rekursiivse lähendusfunktsiooniga, mida kirjeldab lihtsustatud kujul lehe lõpus asuv plokkdiagramm. 
+      Funktsioon arvutab temperatuuri languse lühikeste ajavahemike kaupa, kuni jõuab kasutaja sisestatud lõpptemperatuurini. 
+      Juhul, kui Teil on kogemusi programeerimisega, soovitan Teil vaadata selle rakenduse JavaScripti. Temperatuurikõvera arvutamise eest vastutab funktsioon „grKõver“.
+    </p>
+    <br>
+    <img src="images/Kõvera leidmise skeem ls.svg" alt="Plokkskeem" id="plokkskeem"> 
+    <br>
+  </div>
+</body>
+</html>

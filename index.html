@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Soojasalvestus kalkulaator</title>
+  <link type="image/icon" href="images/favicon.ico" rel="icon"><!--Väikene pilt nime ette-->
+</head>
+
+<body class="w3-sand" onload="lae_andmed()">
+  <div class="w3-sidebar w3-bar-block w3-border" style="display:none" id="külgMenüü"><!--Külg menüü-->
+    <button onclick="this.parentElement.style.display ='none'" class="w3-bar-item w3-large w3-hover-amber">Sule &times;</button>
+    <a href="info.html" class="w3-bar-item w3-button w3-hover-amber">Kuidas see programm töötab?</a>
+    <a href="andmed.html" class="w3-bar-item w3-button w3-hover-amber">Ainete andmebaas</a>
+    <a href="taust.html" class="w3-bar-item w3-button w3-hover-amber">Taust </a>
+  </div>
+  <div class="w3-border w3-bar w3-amber"><!--Pealkirja osa-->
+    <button class="w3-button w3-bar-item w3-hover-orange w3-xlarge w3-margin w3-padding-large" onclick="document.getElementById('külgMenüü').style.display = 'block'">☰</button>
+    <div class="w3-bar-item"><h1>Soojussalvestuspaagi kalkulaator</h1></div>
+    <div class="w3-bar-item w3-right w3-margin">-</div>
+  </div>
+
+  <div class="w3-container w3-sand">
+    <div><!--Arvutatava väärtuse valiku menüü-->
+      <h2>See rakendus võimaldab teil arvutada ükskõik millist järgnevatest soojusenergia salvestamisega seotud suurustest:</h2>
+      <div class="w3-center flex-container"> 
+
+        <div class="w3-card w3-border w3-round" style="width:100%">
+          
+          <div class="w3-bar w3-amber round-upper" style="width:100%">
+            <button class="w3-bar-item w3-button w3-hover-orange arvutusV p-small" onclick="avaInfo('Millist materjali kasutada?', this)"><p>Millist materjali kasutada?</p></button>
+            <button class="w3-bar-item w3-button w3-hover-orange arvutusV p-small" onclick="avaInfo('Kui suurt paaki vaja on?', this)"><p>Kui suurt paaki vaja on?</p></button>
+            <button class="w3-bar-item w3-button w3-hover-orange arvutusV p-small" onclick="avaInfo('Palju soojust saab salvestada?', this)"><p>Palju soojust saab salvestada?</p></button>
+          </div>
+
+          <div class="w3-container info" id="Palju soojust saab salvestada?">
+            <p>Siin saate arvutada valitud kuju, mõõtmete ja salvestusmaterjaliga paagi salvestatava soojusenergia kogust. Selle leidmiseks tuleb sisestada:</p>
+            <ul>
+              <li>soojasalvestusmaterjal;</li>
+              <li>temperatuur, milleni ainet soojendatakse;</li>
+              <li>temperatuur, milleni aine jahtub;</li>
+              <li>paagi kuju ja mõõtmed.</li>
+            </ul>
+            <p>NB! Kui valite paagi välismõõtmed, tuleb kindlasti sisestada ka isolatsiooni paksus. Ilma selleta ei saa arvutada sisemist ruumala.</p>
+            <p>Kui paak on osaliselt tühi, näiteks selleks, et soojasalvestusmaterjalil oleks paisumisruumi, tuleb see sisestada "Paagi täituvus" väljal.</p>
+            <p>Kui sisestada ka see, kui suure võimsusega paagiga ühendatud süsteem selles olevat soojusenergiat tarbib või täidab, leiab programm automaatselt aja, mis kulub, et paagi sisetemperatuur jõuaks maksimumtemperatuurilt miinimumtemperatuurini või vastupidi, eeldades konstantset energiavoogu.</p>
+            <p>Lisaks eelnevale võib sisestada ka paagi isolatsiooni iseloomustavad parameetrid ja välistemperatuuri. Nende abil saab programm arvutada isolatsiooni läbiva soojusvoo ja sellest tuleneva energiakao. Kui programmil puudub isolatsiooni kohta info, siis eeldatakse, et soojuskadu paagi seinte kaudu puudub.</p>
+          </div>
+
+          <div class="w3-container info" id="Kui suurt paaki vaja on?">
+            <p>Teades energiavajadust, saab arvutada vajaliku soojasalvestuspaagi suuruse. Selleks vajab programm järgnevaid andmeid:</p>
+            <ul>
+              <li>tarbitav energiakogus;</li>
+              <li>soojasalvestusmaterjal;</li>
+              <li>temperatuur, milleni ainet soojendatakse;</li>
+              <li>temperatuur, milleni aine jahtub;</li>
+              <li>salvestuspaagi täituvus.</li>
+            </ul>
+            <p>Tarbitava energiakoguse asemel võib sisestada ka soojusenergia tarbimise võimsuse ja ajalise kestuse. 
+              Selle alusel leiab programm automaatselt vajaliku energiakoguse. 
+              Kui soovite arvutada hoone kütmiseks vajalikku soojusenergia kogust, võib teile kasu olla <a href="https://kodu.ut.ee/~etungel/soojus2/" target="_blank" rel="external" class="w3-hover-text-orange">sellest rakendusest</a>.
+            </p>
+          </div>
+          
+          <div class="w3-container info" id="Millist materjali kasutada?">
+            <p>Kui on teada temperatuur, milleni soojustsalvestavat ainet kuumutatakse ning kui palju see võib jahtuda enne, kui muutub liiga külmaks, et seda kütmiseks kasutada, arvutab programm millisesse ainesse saab enim soojusenergiat salvestada. 
+              Kõigil ainetel on kindel keemis- ja lagunemistemperatuur. Üldiselt ei tohi soojasalvestuspaagi sisetemperatuur kumbagi neis ületada. Juhul, kui kasti "Luba ained, mille keemis/lagunemis temperatuur jääb alla maksimumi" on linnuke märgitud, arvutab programm energitiheduse ka nendele ainetele, mille suurim lubatav temperatuur jääb alla sisestatud maksimumtemperatuuri, kuid arvestab selle arvutamisel ainult temperatuurivahemikku minimaalsest temperatuurist kuni lagunemis/keemistemperatuurini. 
+              Kui linnukest mitte märkida, välistab programm kõik ained, mille keemis- või lagunemistemperatuur (standardõhurõhul) jääb alla sisestatud maksimumtemperatuuri.
+            </p>
+            <p>NB! Ainetel, mille keemiline koostis ja struktuur võib sõltuvalt allikast erineda (näiteks graniit, tellised, parafiin), on ka erinev lagunemistemperatuur. Seetõttu on ei ole osal sellistest ainetest programmi andmebaasis lagunemistemperatuuri või on see ligikaudne. 
+              Veenduge enne matejali kasutamist, et see taluks soovitud temperatuure.
+            </p>
+            <p>Soojuse salvestamiseks kasutatud materjalide hind võib olla väga erinev sõltuvalt ajast ja kohast. Seetõttu pole programm võimeline leidma kõige odavamat soojuse salvestamise võimalust. </p>
+          </div>
+
+
+          <div class="w3-center w3-container" id="peidaInfo" style="display:none">
+            <button class="w3-button w3-xlarge w3-hover-amber w3-circle" onclick="suleInfo(this)">^</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="w3-center flex-container"><!--Andmete sisestamise plokkid-->
+      <div class="w3-card w3-border w3-round energiakogus paagiMaht materjal fc2">
+        <header class="w3-container w3-amber round-upper">
+          <h2>Materjal ja temperatuur</h2>
+        </header>
+        <div class="w3-container energiakogus paagiMaht materjal">
+          <p class="energiakogus paagiMaht">Valige nimekirjast soojasalvestusmaterjal.</p>
+          <p class="materjal">Sisestage soojasalvestusmaterjali maksimaalne ja minimaalne temperatuur.</p>
+          <form>
+            <div class="energiakogus paagiMaht">
+              <label for="materjal">Materjal:</label>
+              <select id="materjal" onchange="valiAine(this)"></select>
+            </div>
+            <div class="energiakogus paagiMaht materjal">
+              <label for="max_temp">Maksimaalne temperatuur (°C):</label>
+              <input inputmode="decimal" id="max_temp" onchange="kontroll('temp',this)">
+              <div class="w3-container w3-pale-red w3-round err"></div>
+              <br>
+              <label for="min_temp">Minimaalne temperatuur (°C):</label>
+              <input inputmode="decimal" id="min_temp" onchange="kontroll('temp',this)">
+              <div class="w3-container w3-pale-red w3-round err"></div>
+            </div>
+            <div class="energiakogus">
+              <br>
+              <label for="välis_temp">Väliskeskkonna temperatuur (°C):</label>
+              <input inputmode="decimal" id="välis_temp" onchange="kontroll('temp',this)">
+              <div class="w3-container w3-pale-red w3-round err"></div>
+            </div>
+            <div class="materjal">
+              <label for="temp_piirang">Luba ained, mille keemis/lagunemis temperatuur jääb alla maksimumi</label>
+              <input type="checkbox" id="temp_piirang">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="w3-card w3-border w3-round energiakogus paagiMaht fc2">
+        <header class="w3-container w3-amber round-upper">
+          <h2>Mahuti</h2>
+        </header>
+        <div class="w3-container energiakogus paagiMaht">
+          <p class="energiakogus">Sisestage mahuti kuju ja mõõtmed ning vajadusel soojustuse omadused.</p>
+          <p class="paagiMaht">Sisestage, mitu protsenti paagi sisemisest ruumalast on soojasalvestusainega täidetud.</p>
+          <form>
+            <div class="energiakogus">
+              
+              <label for="kuju">Salvestuspaagi kuju:</label>
+              <select id="kuju" onchange="laePilt()">
+                <option value="Risttahukas">Risttahukas</option>
+                <option value="Silinder">Silinder</option>
+                <option value="Ü.silinder">Ümaraotsaline silinder</option>
+                <option value="Kera">Kera</option>
+              </select>
+              <br>
+              <img id="joonis" src="images/Risttahukas.png" alt="Kujundi pilt">
+              <br>
+              <p>Salvestuspaagi mõõtmed:</p>
+              <label for="pikkusÜhik">Ühik:</label>
+              <select id="pikkusÜhik" onchange="ühikud(this)">
+                <option value="m">m</option>
+                <option value="cm">cm</option>
+                <option value="mm">mm</option>
+              </select>
+              <br>
+              <div id="abc" class="mõõtmed">
+                <label for="a">Pikkus (a):</label>
+                <input inputmode="decimal" id="a" onchange="kontroll('mõõt',this)">
+                <div class="w3-container w3-pale-red w3-round err"></div>
+                <br>
+                <label for="b">Laius (b):</label>
+                <input inputmode="decimal" id="b" onchange="kontroll('mõõt',this)">
+                <div class="w3-container w3-pale-red w3-round err"></div>
+                <br>
+                <label for="c">Kõrgus (c):</label>
+                <input inputmode="decimal" id="c" onchange="kontroll('mõõt',this)">
+                <div class="w3-container w3-pale-red w3-round err"></div>
+              </div>
+              <div id="h1" class="mõõtmed" style="display: none;">
+                <label for="h">Kõrgus (h):</label>
+                <input inputmode="decimal" id="h" onchange="kontroll('mõõt',this)">
+                <div class="w3-container w3-pale-red w3-round err"></div>
+              </div>
+              <div id="d1" class="mõõtmed" style="display: none;">
+                <label for="d">Läbimõõt (d):</label>
+                <input inputmode="decimal" id="d" onchange="kontroll('mõõt',this)">
+                <div class="w3-container w3-pale-red w3-round err"></div>
+              </div>
+              
+  
+              <label for="sise/välis">Tegemist on paagi</label>
+              <select id="sise/välis" onchange="valiTüüp(this)">
+                <option value="sise">sisemõõtmetega</option>
+                <option value="välis">välismõõtmetega</option>
+              </select>
+              <p style="display: none;">NB! Sisemõõtmete arvutamiseks tuleb sisestada isolatsiooni paksus.</p>
+            </div>
+
+            <div class="energiakogus paagiMaht">
+              <label for="täituvus">Mahuti täituvus (%):</label>
+              <input inputmode="decimal" id="täituvus" onchange="kontroll('%',this)">
+              <div class="w3-container w3-pale-red w3-round err"></div>
+            </div>
+          </form>
+
+          <div class="energiakogus">
+            <p> Selleks, et oleks võimalik arvutada soojuskadu, sisestage soojustuse omadused.</p>
+            <form>
+              <select id="soojustusOmadused" onchange="uuendaVälju(this)">
+                <option value="Rs">Soojustakistus</option>
+                <option value="SJT">Soojusjuhtivustegur</option>
+              </select>
+              <br>
+              <div id="SJT">
+                <label for="l">Soojusjuhtivustegur (W/(m×K)):</label>
+                <input inputmode="decimal" id="l" onchange="kontroll('soojusjuhtivusT',this)">
+                <div class="w3-container w3-pale-red w3-round err"></div>
+              </div>
+              <div id="Rs">
+                <label for="R">Soojustakistus ((m²×K)/W):</label>
+                <input inputmode="decimal" id="R" onchange="kontroll('',this)">
+                <div class="w3-container w3-pale-red w3-round err"></div>
+              </div>
+              <div id="paksus">
+                <label for="p">Isolatsiooni paksus:</label>
+                <input inputmode="decimal" id="p" onchange="kontroll('paksus',this)">
+                <select id="paksusÜhik" onchange="ühikud(this)">
+                  <option value="m">m</option>
+                  <option value="cm">cm</option>
+                  <option value="mm">mm</option>
+                </select>
+                <div class="w3-container w3-pale-red w3-round err"></div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="w3-card w3-border w3-round energiakogus paagiMaht fc2">
+        <header class="w3-container w3-amber round-upper">
+          <h2>Energiabilanss</h2>
+        </header>
+        <div class="w3-container energiakogus paagiMaht">
+          <p class="energiakogus">Valige, kas toimub energia salvestamine või kasutamine ning millise võimsusega.</p>
+          <p class="paagiMaht">Sisestage paaki salvestatav energiakogus või oodatav tarbimise võimsus ja kestus.</p>
+          
+          <form>
+            <div class="energiakogus">
+              <label for="energiaSuund">Paagi sisu:</label>
+              <select id="energiaSuund" onchange="uuendaVälju(this)">
+                <option value="võimsus+isolatsiooniK">jahutatakse</option>
+                <option value="võimsus">soojendatakse</option>
+              </select>
+            </div>
+            <div id="Soojendatakse"></div>
+
+            <div class="paagiMaht">
+              <select id="E/P&aeg" onchange="uuendaVälju(this)">
+                <option value="Energia hulk">energiakogus</option>
+                <option value="võimsus+aeg">Võimsus ja aeg</option>
+              </select>
+            </div>
+
+            <div id="võimsus">
+              
+              <label for="P">Võimsus:</label>
+              <input inputmode="decimal" id="P" onchange="kontroll('võimsus',this)">
+              <select id="võimsuseÜhik" onchange="ühikud(this)">
+                <option value="W">W</option>
+                <option value="kW">kW</option>
+              </select>
+              <div class="w3-container w3-pale-red w3-round err"></div>
+
+            </div>
+
+            <div class="paagiMaht">
+              <div id="aeg">
+                <label for="aeg">Tarbimise kestus:</label>
+                <input inputmode="decimal" id="aeg" onchange="kontroll('aeg',this)">
+                <select id="ajaÜhik" onchange="ühikud(this)">
+                  <option value="min">minutit</option>
+                  <option value="h">tundi</option>
+                  <option value="d">päeva</option>
+                </select>
+                <div class="w3-container w3-pale-red w3-round err"></div>
+              </div>
+
+              <div id="Energia hulk">
+                <label for="E">Salvestatav energia:</label>
+                <input inputmode="decimal" id="E" onchange="kontroll('energia',this)">
+                <select id="energiaÜhik" onchange="ühikud(this)">
+                  <option value="J">J</option>
+                  <option value="kJ">kJ</option>
+                  <option value="Wh">Wh</option>
+                  <option value="kWh">kWh</option>
+                </select>
+                <div class="w3-container w3-pale-red w3-round err"></div>
+              </div>
+            </div>
+
+
+            <div class="energiakogus">
+              <div id="isolatsiooniK">
+                <label for="KasLiita">Läbi isolatsiooni lekkiv soojusenergia:</label>
+                <select id="KasLiita">
+                  <option value="osa tarbimisest">on osa tarbimisest</option>
+                  <option value="lisa võimsus">lisandub tarbimisele</option>
+                </select>
+              </div>
+            </div>
+
+            
+          </form>
+        </div>
+      </div>
+
+      <div id="tulemused" class="w3-card w3-border w3-round fc1"><!--Väli, mille sees kuvatakse arvutustulemuste graafik-->
+        <header class="w3-container w3-amber round-upper">
+          <h2>Tulemused</h2>
+        </header>
+        <div class="w3-container flex-container">
+          <div class="fc2 energiakogus paagiMaht">
+            <p id="tekstEnneGraafikut"></p>
+          </div>
+          <div id="graafiku_osa" class="energiakogus materjal fc1">
+            <div class="w3-display-container w3-margin">
+              <canvas id="chart"></canvas>
+              <div class="w3-display-topright w3-margin-right materjal energiakogus">
+                <form>
+                  <label for="grÜhik">Ühik:</label>
+                  <select id="grÜhik" onchange=""></select>
+                </form>
+              </div>
+            </div>
+            <div class="w3-container w3-margin-left p-small">
+              <p id="allaLaadimine">Lae graafik alla: 
+                <a href="" class="w3-button w3-round-large w3-amber w3-hover-orange" download="graafik.png" onclick="laeGraafikAlla(this)">Pilt (PNG)</a> 
+                <a href="" class="w3-button w3-round-large w3-amber w3-hover-orange" download="graafik.csv" onclick="laeGraafikAlla(this)">Andmed (CSV)</a>
+              </p>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div> 
+    <div class="w3-center w3-margin">
+      <div class="w3-container w3-pale-red w3-round err" id="loogika_err"></div><!--Sellesse sektsiooni lisab "loogikakontroll" funktsioon veateate, kui andmed ei ole mingil viisil loogilised või täielikud-->
+      <button class="w3-button w3-round-large w3-amber w3-hover-orange " style="width: 20%;" type="submit" onclick="arvuta()">Arvuta</button>
+    </div>
+       
+  </div>
+      
+</body>
+<script src=app.js></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</html>

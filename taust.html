@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Soojasalvestus kalkulaator</title>
+  <link type="image/icon" href="images/favicon.ico" rel="icon"><!--Väikene pilt nime ette-->
+</head>
+
+<body class="w3-sand">
+  <div class="w3-sidebar w3-bar-block w3-border" style="display:none" id="külgMenüü"><!--Külg menüü-->
+    <button onclick="this.parentElement.style.display ='none'" class="w3-bar-item w3-large w3-hover-amber">Sule &times;</button>
+    <a href="index.html" class="w3-bar-item w3-button w3-hover-amber">Programm</a>
+    <a href="andmed.html" class="w3-bar-item w3-button w3-hover-amber">Ainete andmebaas</a>
+    <a href="info.html" class="w3-bar-item w3-button w3-hover-amber">Kuidas see programm töötab?</a>
+  </div>
+  <div class="w3-border w3-bar w3-amber"><!--Pealkirja osa-->
+    <button class="w3-button w3-bar-item w3-hover-orange w3-xlarge w3-margin w3-padding-large" onclick="document.getElementById('külgMenüü').style.display = 'block'">☰</button>
+    <div class="w3-bar-item"><h1>Soojussalvestuspaagi kalkulaator</h1></div>
+  </div>
+
+  <div class="w3-container w3-sand w3-padding-large"><!--Sisu-->
+    <p>See rakendus on loodud osana autori, Sander Võrgu, bakalaureusetööst "Veebirakendus soojasalvestuspaagi parameetrite automaatseks arvutamiseks".</p>
+    <p>Valisin sellise teema, mõeldes väga kõrgetele elektrihindadele, mis Euroopas viimastel aastatel on olnud. 
+      Kuigi hinnad on juba langenud, on energia tootmise ja tarbimise tasakaalus hoidmine järjest olulisem teema paljude taastuvenergialiikide ajas muutliku tootluse tõttu. Mõtlesin viisidele, kuidas taastuvatest allikatest pärinevat energiat salvestada, et seda hiljem suurema nõudluse ajal kasutada ja soojusenergia salvestamine tundus selleks huvitava võimalusena. 
+      Mulle tundus, et võiks olla selline rakendus, mis ütleks, millises aines on kõige otstarbekam soojust salvestada, kui palju ainet vaja on, kui suur on energikadu isolatsiooni läbiva soojusvoo tõttu jne. 
+      Google ei leidnud, et midagi sellist juba olemas oleks, nii et otsustasin selle ära teha.
+    </p>
+    <p>Sooviksin tänada Eesti Maaülikooli õppejõude Janar Kalderit ja Mart Hovi, kellest esimene oli minu juhendajaks lõputöö kirjutamisel ja teine aitas kontrollida programmi leitud andmete tõepärasust ning andis mitu ideed selle täiendamiseks.</p>
+  </div>
+</body>
+</html>
