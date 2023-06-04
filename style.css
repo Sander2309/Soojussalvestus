@@ -111,5 +111,16 @@ input{
   position: sticky;
   left: 0;
   z-index: 2;
-  background-color: #fff;
+}
+
+th, tr:nth-child(even) > td {
+  background-color: rgb(255, 255, 255);
+}
+
+tr:nth-child(odd) > td {
+  background-color: rgb(222, 222, 222);
+}
+
+tr:hover > td {
+  background-color: rgb(200, 200, 200);
 }
