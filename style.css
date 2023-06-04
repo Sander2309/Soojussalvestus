@@ -105,6 +105,9 @@ input{
 
 .fixed-column{
   overflow-x: auto;
+  border: 2px solid #ccc;
+  margin-top: 16px;
+  scrollbar-color: rgb(26, 26, 26) rgba(0, 0, 0, 0);
 }
 
 .fixed-column tr *:first-child {

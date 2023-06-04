@@ -45,7 +45,7 @@ function täidaAndmetabel(){// Täidab "ainete andmebaasi" lehel oleva tabeli an
         return 'sool';
       case 'a':
         return 'hape/alus';
-      case 'x':
+      case '×':
         return 'muu';
     }
   }
