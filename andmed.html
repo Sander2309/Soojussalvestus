@@ -22,22 +22,24 @@
     <div class="w3-bar-item"><h1>Soojussalvestuspaagi kalkulaator</h1></div>
   </div>
   <div class="w3-container w3-sand">
-    <table class="w3-table-all w3-hoverable w3-centered w3-margin-top">
-      <thead>
-        <tr>
-          <th>Valem/nimi</th>
-          <th>Sulamispunkt (℃)</th>
-          <th>Faasimuutussoojus (kJ/kg)</th>
-          <th>Tihedus (kg/m3)</th>
-          <th>Massierisoojus tahke (kJ/kg∙K)</th>
-          <th>Massierisoojus vedel (kJ/kg∙K)</th>
-          <th>Keemis või Lagunemis temp (℃)</th>
-          <th>Aine tüüp</th>
-          <th>Andmeallikad</th>
-        </tr>
-      </thead>
-      <tbody id="andmetabeliSisu"></tbody>
-    </table>
+    <div class="fixed-column">
+      <table class="w3-table-all w3-hoverable w3-centered w3-margin-top">
+        <thead>
+          <tr>
+            <th>Valem/nimi</th>
+            <th>Sulamispunkt (℃)</th>
+            <th>Faasimuutus-soojus (kJ/kg)</th>
+            <th>Tihedus (kg/m3)</th>
+            <th>Massierisoojus tahke (kJ/kg∙K)</th>
+            <th>Massierisoojus vedel (kJ/kg∙K)</th>
+            <th>Keemis või Lagunemis temp (℃)</th>
+            <th>Aine tüüp</th>
+            <th>Andmeallikad</th>
+          </tr>
+        </thead>
+        <tbody id="andmetabeliSisu"></tbody>
+      </table>
+    </div>
     <h2>Märkused:</h2>
     <ol>
       <li>Andmed kehtivad standardrõhul.</li>

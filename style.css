@@ -100,3 +100,16 @@ input{
   margin-right: auto;
   width: 90%;
 }
+
+/*https://stackoverflow.com/questions/3402295/html-table-with-horizontal-scrolling-first-column-fixed */
+
+.fixed-column{
+  overflow-x: auto;
+}
+
+.fixed-column tr *:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color: #fff;
+}
