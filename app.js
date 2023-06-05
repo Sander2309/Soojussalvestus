@@ -776,6 +776,16 @@ const kuvaTulemus = {// Objekt, mis sisaldab erinevaid funktsioone graafikute ge
     väärtused.length = maht;
     värvid.length = maht;
 
+    var laius = window.innerWidth;
+    var telg = 'x';
+    var kuvaSuhe = 2;
+
+    if (laius < 525){
+      telg = 'y';
+      kuvaSuhe = 0.75;
+      document.getElementById('chart').style.paddingTop = '24px';
+    }
+
     const spetsLegend = function(context){
       var legends = context.legend.legendItems;
       legends[0].fillStyle = "rgba(0, 200, 250, 0.5)";
@@ -824,6 +834,8 @@ const kuvaTulemus = {// Objekt, mis sisaldab erinevaid funktsioone graafikute ge
           }]
         },
         options: {
+          indexAxis: telg,
+          aspectRatio: kuvaSuhe,
           scales: {
             y: {
               beginAtZero: true
