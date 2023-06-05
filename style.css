@@ -139,3 +139,11 @@ tr:nth-child(odd) > td {
 tr:hover > td {
   background-color: rgb(200, 200, 200);
 }
+
+#allaLaadimine > span > a {
+  display: inline-block;
+}
+
+#allaLaadimine > span {
+  white-space: nowrap;
+}

@@ -776,6 +776,11 @@ const kuvaTulemus = {// Objekt, mis sisaldab erinevaid funktsioone graafikute ge
     väärtused.length = maht;
     värvid.length = maht;
 
+    var legendiOsad = '1';
+    if (värvid.includes('rgba(245, 66, 66, 0.5)')){
+      legendiOsad = '2';
+    }
+
     var laius = window.innerWidth;
     var telg = 'x';
     var kuvaSuhe = 2;
@@ -788,13 +793,16 @@ const kuvaTulemus = {// Objekt, mis sisaldab erinevaid funktsioone graafikute ge
 
     const spetsLegend = function(context){
       var legends = context.legend.legendItems;
-      legends[0].fillStyle = "rgba(0, 200, 250, 0.5)";
-      legends[0].text = 'Kasutatav kogu temp vahemikus';
-      if (chart.data.datasets[0].backgroundColor.includes('rgba(245, 66, 66, 0.5)')){// Kui on piiratud vahemikuga aineid, siis lisa legendi eraldi tähis
+      //console.log(context);
+      
+      if (legends[0].text === '2'){// Kui on piiratud vahemikuga aineid, siis lisa legendi eraldi tähis
         legends[1] = JSON.parse(JSON.stringify(legends[0]));
         legends[1].fillStyle = "rgba(245, 66, 66, 0.5)";
         legends[1].text = 'Kasutatav piiratud temp vahemikus';
       }
+
+      legends[0].fillStyle = "rgba(0, 200, 250, 0.5)";
+      legends[0].text = 'Kasutatav kogu temp vahemikus';
     }
 
     const spetsInfo = function(context){
@@ -810,10 +818,25 @@ const kuvaTulemus = {// Objekt, mis sisaldab erinevaid funktsioone graafikute ge
       return vastus;
     }
 
+    const teeRuumi = function(chart, legend, options){ //https://www.youtube.com/watch?v=87rnMzENg3U 
+      //console.log(chart.legend.fit);
+      const fitValue = chart.legend.fit;
+
+      chart.legend.fit = function fit(){
+        fitValue.bind(chart.legend)();
+        console.log(chart);
+        let lisa = 8;
+        if ((chart.legend.legendItems[0].text === '2') && (chart.width < 500)){// Kui on kaks silti ja need ei mahu ühele reale
+          lisa = 24;
+        }
+        return this.height += lisa;
+      }
+    }
+
     if (chart){
       chart.data.labels = sildid;
       chart.data.datasets[0].data = väärtused;
-      chart.data.datasets[0].label = graafikuÜhik;
+      chart.data.datasets[0].label = legendiOsad;
       chart.data.datasets[0].backgroundColor = värvid;
       chart.options.plugins.tooltip.callbacks.label = spetsInfo;
       chart.update();
@@ -827,7 +850,7 @@ const kuvaTulemus = {// Objekt, mis sisaldab erinevaid funktsioone graafikute ge
         data: {
           labels: sildid,
           datasets: [{
-            label: graafikuÜhik,
+            label: legendiOsad,
             data: väärtused,
             borderWidth: 1,
             backgroundColor: värvid
@@ -856,7 +879,8 @@ const kuvaTulemus = {// Objekt, mis sisaldab erinevaid funktsioone graafikute ge
         },
         plugins: [
           {
-            beforeDraw: spetsLegend
+            beforeDraw: spetsLegend,
+            beforeInit: teeRuumi
           }
         ]
       });
