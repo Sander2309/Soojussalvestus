@@ -26,7 +26,7 @@ input{
   width: 20px;
 }
 
-.info, .energiakogus, .paagiMaht, .materjal{
+.info, .energiakogus, .paagiMaht, .materjal {
   display: none;
 }
 
@@ -69,6 +69,18 @@ input{
   h1 {
     width: 315px;
     font-size: 32px;
+  }
+}
+
+#märkus_liigutamisest {
+  display: none;
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+@media screen and (max-width: 1225px) {
+  #märkus_liigutamisest {
+    display: block;
   }
 }
 
