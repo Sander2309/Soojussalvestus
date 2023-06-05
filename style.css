@@ -14,6 +14,11 @@ header h2 {
   border-radius: 4px 0px 0px 0px;
 }
 
+#külgMenüü {
+  display:none;
+  z-index: 3;
+}
+
 body{
   font-size: 16px;
 }
@@ -42,6 +47,11 @@ input{
 .w3-card {
   text-align: left;
   margin: 8px;
+}
+
+#arvuta {
+  width: 20%;
+  min-width: 200px;
 }
 
 .fc2 {
