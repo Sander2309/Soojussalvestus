@@ -1300,5 +1300,6 @@ function demo(e){
 
     setTimeout (() => {document.getElementById("arvuta").focus()}, 10500);
     setTimeout (() => {document.getElementById("arvuta").dispatchEvent(event)}, 10600);
+    setTimeout (() => {window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}, 11000);
   }
 }
