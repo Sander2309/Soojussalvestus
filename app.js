@@ -1279,3 +1279,26 @@ function arvuta(){// Arvuta nuppu vajutamisel arvutab selle, mida vaja
       break;
   }
 }
+
+window.addEventListener('keydown', demo);
+
+function demo(e){
+  console.log(e.code);
+  if (e.code === 'KeyD'){
+    console.log('demo algab');
+    var event = new Event('click');
+    setTimeout (() => {document.querySelector('.arvutusV').dispatchEvent(event)}, 5000);
+
+    setTimeout (() => {document.getElementById("max_temp").focus()}, 6000);
+    setTimeout (() => {document.getElementById("max_temp").value = 1}, 6500);
+    setTimeout (() => {document.getElementById("max_temp").value = 15}, 7000);
+    setTimeout (() => {document.getElementById("max_temp").value = 155}, 7500);
+
+    setTimeout (() => {document.getElementById("min_temp").focus()}, 8500);
+    setTimeout (() => {document.getElementById("min_temp").value = 3}, 9000);
+    setTimeout (() => {document.getElementById("min_temp").value = 38}, 9500);
+
+    setTimeout (() => {document.getElementById("arvuta").focus()}, 10500);
+    setTimeout (() => {document.getElementById("arvuta").dispatchEvent(event)}, 10600);
+  }
+}
