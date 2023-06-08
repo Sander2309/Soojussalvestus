@@ -1287,6 +1287,8 @@ function demo(e){
   if (e.code === 'KeyD'){
     console.log('demo algab');
     var event = new Event('click');
+    document.getElementById("demo").innerHTML = 'demo';
+
     setTimeout (() => {document.querySelector('.arvutusV').dispatchEvent(event)}, 5000);
 
     setTimeout (() => {document.getElementById("max_temp").focus()}, 6000);
