@@ -1280,28 +1280,27 @@ function arvuta(){// Arvuta nuppu vajutamisel arvutab selle, mida vaja
   }
 }
 
-window.addEventListener('keydown', demo);
+//window.addEventListener('keydown', demo);
 
-function demo(e){
-  console.log(e.code);
-  if (e.code === 'KeyD'){
-    console.log('demo algab');
-    var event = new Event('click');
-    document.getElementById("demo").innerHTML = 'demo';
+function demo(){
+  
+  console.log('demo algab');
+  var event = new Event('click');
+  document.getElementById("demo").innerHTML = 'demo';
 
-    setTimeout (() => {document.querySelector('.arvutusV').dispatchEvent(event)}, 2000);
+  setTimeout (() => {document.querySelector('.arvutusV').dispatchEvent(event)}, 2000);
 
-    setTimeout (() => {document.getElementById("max_temp").focus()}, 7000);
-    setTimeout (() => {document.getElementById("max_temp").value = 1}, 7500);
-    setTimeout (() => {document.getElementById("max_temp").value = 15}, 8000);
-    setTimeout (() => {document.getElementById("max_temp").value = 155}, 8500);
+  setTimeout (() => {document.getElementById("max_temp").focus()}, 7000);
+  setTimeout (() => {document.getElementById("max_temp").value = 1}, 7500);
+  setTimeout (() => {document.getElementById("max_temp").value = 15}, 8000);
+  setTimeout (() => {document.getElementById("max_temp").value = 155}, 8500);
 
-    setTimeout (() => {document.getElementById("min_temp").focus()}, 10000);
-    setTimeout (() => {document.getElementById("min_temp").value = 3}, 10500);
-    setTimeout (() => {document.getElementById("min_temp").value = 38}, 11000);
+  setTimeout (() => {document.getElementById("min_temp").focus()}, 10000);
+  setTimeout (() => {document.getElementById("min_temp").value = 3}, 10500);
+  setTimeout (() => {document.getElementById("min_temp").value = 38}, 11000);
 
-    setTimeout (() => {document.getElementById("arvuta").focus()}, 15000);
-    setTimeout (() => {document.getElementById("arvuta").dispatchEvent(event)}, 15100);
-    setTimeout (() => {window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}, 15200);
-  }
+  setTimeout (() => {document.getElementById("arvuta").focus()}, 15000);
+  setTimeout (() => {document.getElementById("arvuta").dispatchEvent(event)}, 15100);
+  setTimeout (() => {window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}, 15200);
+
 }
